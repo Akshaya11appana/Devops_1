@@ -1,1 +1,23 @@
-
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-app
+  namespace: dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sample
+  template:
+    metadata:
+      labels:
+        app: sample
+    spec:
+      containers:
+      - name: sample
+        image: IMAGE_PLACEHOLDER
+        env:
+        - name: ENV_NAME
+          value: "DEV"
+        ports:
+        - containerPort: 5000
